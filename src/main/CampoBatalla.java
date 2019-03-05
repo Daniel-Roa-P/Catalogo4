@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
+import static main.Catalogo.aspectoElfo;
+import static main.Catalogo.aspectoHumano;
+import static main.Catalogo.aspectoOrco;
 
 
 public class CampoBatalla extends Canvas{
@@ -26,8 +29,14 @@ public class CampoBatalla extends Canvas{
         for (int f = 0; f < matriz.length; f++) {
             for (int c = 0; c < matriz[f].length; c++) {
                 if (matriz[f][c].equals("1")) {
-                    rocas.add(new Muros(f * 8, c * 8));
-                }
+                    rocas.add(new Miniaturas(f * 8, c * 8, "muro"));
+                } else if (matriz[f][c].equals("e")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, aspectoElfo));
+                } else if (matriz[f][c].equals("h")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, aspectoHumano));
+                } else if (matriz[f][c].equals("o")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, aspectoOrco));
+                } 
 
             }
         }

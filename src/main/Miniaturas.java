@@ -6,15 +6,16 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
-public class Muros implements Sprites{
+public class Miniaturas implements Sprites{
 
-    Image imagen = new ImageIcon(getClass().getResource("../Imagenes/muro.PNG")).getImage();
     int xPos = 0;
     int yPos = 0;
+    Image imagen;
     
-    public Muros(int x, int y){
+    public Miniaturas(int x, int y, String miniatura){
         xPos = x;
         yPos = y;
+        imagen = new ImageIcon(getClass().getResource("../Imagenes/"+miniatura+"min.png")).getImage();
     }
     
     @Override

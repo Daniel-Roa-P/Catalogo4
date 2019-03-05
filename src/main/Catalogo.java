@@ -56,9 +56,9 @@ public class Catalogo extends JFrame implements ActionListener {
         public Icon iconoHumano;
         public Icon iconoOrco;
 
-        private final JTextField cantidadElfos=new JTextField("1");
-        private final JTextField cantidadHumanos=new JTextField("1");
-        private final JTextField cantidadOrcos=new JTextField("1");
+        private final JTextField cantidadElfos=new JTextField("5");
+        private final JTextField cantidadHumanos=new JTextField("5");
+        private final JTextField cantidadOrcos=new JTextField("5");
         
         private final Director D=new Director();
         private Personaje P=new Personaje();
@@ -68,6 +68,7 @@ public class Catalogo extends JFrame implements ActionListener {
         public int nElfos,nHumanos,nOrcos,ntropas;
          
         public static Catalogo catalogo;
+        public static String aspectoElfo,aspectoHumano,aspectoOrco;
         
         JPanel jpan;
         
@@ -213,10 +214,13 @@ public class Catalogo extends JFrame implements ActionListener {
         Icon iconoEscalado6  = new ImageIcon(imgEscalada6);
         
         if(id.equals("elfo")){
+                aspectoElfo = P.getConjunto();
                 iconoElfo=iconoEscalado6;
             } else if(id.equals("humano")){
+                aspectoHumano = P.getConjunto();
                 iconoHumano=iconoEscalado6;
             } else if(id.equals("orco")){
+                aspectoOrco = P.getConjunto();
                 iconoOrco=iconoEscalado6;
             }
         

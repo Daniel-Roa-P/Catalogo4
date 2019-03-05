@@ -9,10 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static main.Catalogo.catalogo;
 
 public class Juego extends JFrame implements ActionListener{
     
-    private final JButton b1 = new JButton("Generar mapa");
+    private final JButton b1 = new JButton("Generar Rivales");
     private final JButton b2 = new JButton("Ingresar elfo");
     private final JButton b3 = new JButton("Ingresar Humano");
     private final JButton b4 = new JButton("Ingresar Orco");
@@ -26,6 +27,11 @@ public class Juego extends JFrame implements ActionListener{
     
     private final JLabel posX = new JLabel("posicion X:");
     private final JLabel posY = new JLabel("posicion Y:");
+    
+    private int total;
+    private int nElfos;
+    private int nHumanos;
+    private int nOrcos;
     
     CampoBatalla campo = new CampoBatalla();
     Archivos fu = new Archivos();
@@ -76,25 +82,41 @@ public class Juego extends JFrame implements ActionListener{
         c.add(textoX);
         c.add(textoY);
         
-        iniciarComponentes();
+        this.nElfos=catalogo.nElfos;
+        this.nHumanos=catalogo.nHumanos;
+        this.nOrcos=catalogo.nOrcos;
+        this.total=catalogo.ntropas;
         
+        iniciarComponentes();
+        contador();
+                
     }
     
     public void iniciarComponentes(){
         String archivo = fu.archivoAleatorio("../archivos");
-        
-        System.out.println(archivo);
-        
         matriz = fu.fileToMatriz("../archivos/" + archivo);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        actualizarComponentes();
+    }
+    
+    public void actualizarComponentes(){
+        
         setLayout(null);
         add(campo);
         pack();
         setBounds(0, 0, 1350, 730);
         campo.iniciarCampo(matriz);
         campo.setBounds(0, 0, 1300, 730);
+        
     }
-
+    public void contador(){
+        
+        elfos.setText("Elfos Restantes:" +nElfos);
+        humanos.setText("Humanos Restantes:" +nHumanos);
+        orco.setText("Orcos Restantes:" +nOrcos);
+        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -102,17 +124,41 @@ public class Juego extends JFrame implements ActionListener{
          
             System.out.println("boton_1");
             
-        } else if(e.getSource()==b2){
+        } else if(e.getSource()==b2 && nElfos>0){
         
             System.out.println("boton_2");
+            nElfos--;
             
-        } else if(e.getSource()==b3){
+            int x=Integer.parseInt(textoX.getText());
+            int y=Integer.parseInt(textoY.getText());
+            
+            matriz[(x*5)+1][(y*5)+1]="e";
+            actualizarComponentes();
+            contador();
+            
+        } else if(e.getSource()==b3 && nHumanos>0){
         
             System.out.println("boton_3");
+            nHumanos--;
             
-        } else if(e.getSource()==b4){
-        
+            int x=Integer.parseInt(textoX.getText());
+            int y=Integer.parseInt(textoY.getText());
+            
+            matriz[(x*5)+1][(y*5)+1]="h";
+            actualizarComponentes();
+            contador();
+            
+        } else if(e.getSource()==b4 &&nOrcos>0){
+            
             System.out.println("boton_4");
+            nOrcos--;
+            
+            int x=Integer.parseInt(textoX.getText());
+            int y=Integer.parseInt(textoY.getText());
+            
+            matriz[(x*5)+1][(y*5)+1]="o";
+            actualizarComponentes();
+            contador();
             
         } else if(e.getSource()==b5){
         
