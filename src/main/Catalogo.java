@@ -10,6 +10,7 @@ import Builder.ConstructorHumano;
 import Builder.ConstructorOrco;
 import Builder.Director;
 import Builder.Personaje;
+import Flyweight.Administrador;
 import Prototype.Diseñador;
 import Prototype.PrototipoPersonajes;
 import java.awt.Color;
@@ -69,6 +70,7 @@ public class Catalogo extends JFrame implements ActionListener {
          
         public static Catalogo catalogo;
         public static String aspectoElfo,aspectoHumano,aspectoOrco;
+        public static Administrador adm;
         
         JPanel jpan;
         
@@ -358,6 +360,8 @@ public class Catalogo extends JFrame implements ActionListener {
                 jpan.repaint();
                  
             }
+            
+            adm = new Administrador(nElfos,nHumanos,nOrcos);
             
         } else if(e.getSource()==b8){
             

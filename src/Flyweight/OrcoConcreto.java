@@ -5,6 +5,15 @@ import static main.Catalogo.aspectoOrco;
 
 public class OrcoConcreto extends Personaje{
 
+    OrcoConcreto(){
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
     @Override
     public int getVida() {
         return vida;

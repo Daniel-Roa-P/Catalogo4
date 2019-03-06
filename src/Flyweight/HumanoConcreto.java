@@ -2,10 +2,18 @@
 package Flyweight;
 
 import static main.Catalogo.aspectoHumano;
-import static main.Catalogo.aspectoOrco;
 
 public class HumanoConcreto extends Personaje {
 
+    HumanoConcreto(){
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
      @Override
     public int getVida() {
         return vida;
@@ -14,7 +22,7 @@ public class HumanoConcreto extends Personaje {
     @Override
     public void setVida() {
         
-        this.vida=300;
+        this.vida=200;
         
     }
 

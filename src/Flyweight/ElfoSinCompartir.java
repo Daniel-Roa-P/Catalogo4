@@ -3,10 +3,31 @@ package Flyweight;
 
 public class ElfoSinCompartir extends Personaje{
 
-    private final ElfoConcreto elfo= CreadorElfos.getElfo();
+    private int coorX;
+    private int coorY;
+    private int daño;
     
-    @Override
+    private final ElfoConcreto elfo;
+    
+    public ElfoSinCompartir(int x, int y){
+        
+        this.coorX=x;
+        this.coorY=y;
+        
+        elfo= CreadorElfos.getElfo();
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
+     @Override
     public int getVida() {
+        
+        vida=vida-daño;
+        
         return vida;
     }
 
@@ -19,6 +40,8 @@ public class ElfoSinCompartir extends Personaje{
 
     @Override
     public int getDefensa() {
+        
+        daño=(daño/defensa)*10;
         return defensa;
     }
 
@@ -31,6 +54,7 @@ public class ElfoSinCompartir extends Personaje{
 
     @Override
     public int getAtaque() {
+        
         return ataque;
     }
 
@@ -41,6 +65,8 @@ public class ElfoSinCompartir extends Personaje{
 
     @Override
     public int getVelocidad() {
+        
+        velocidad = velocidad+velocidad;
         return velocidad;    
     }
 
@@ -49,6 +75,8 @@ public class ElfoSinCompartir extends Personaje{
         
         this.velocidad=elfo.getVelocidad();
     
+        System.out.println("personaje elfo "+coorX+" "+coorY+" "+vida+" "+ataque+" "+defensa+" "+velocidad);
+        
     }
     
 }

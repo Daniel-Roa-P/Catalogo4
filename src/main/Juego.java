@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import static main.Catalogo.adm;
 import static main.Catalogo.catalogo;
 
 public class Juego extends JFrame implements ActionListener{
@@ -132,6 +133,8 @@ public class Juego extends JFrame implements ActionListener{
             int x=Integer.parseInt(textoX.getText());
             int y=Integer.parseInt(textoY.getText());
             
+            adm.generarElfos(x, y);
+            
             matriz[(x*5)+1][(y*5)+1]="e";
             actualizarComponentes();
             contador();
@@ -144,6 +147,8 @@ public class Juego extends JFrame implements ActionListener{
             int x=Integer.parseInt(textoX.getText());
             int y=Integer.parseInt(textoY.getText());
             
+            adm.generarHumanos(x, y);
+            
             matriz[(x*5)+1][(y*5)+1]="h";
             actualizarComponentes();
             contador();
@@ -155,6 +160,8 @@ public class Juego extends JFrame implements ActionListener{
             
             int x=Integer.parseInt(textoX.getText());
             int y=Integer.parseInt(textoY.getText());
+            
+            adm.generarOrcos(x, y);
             
             matriz[(x*5)+1][(y*5)+1]="o";
             actualizarComponentes();

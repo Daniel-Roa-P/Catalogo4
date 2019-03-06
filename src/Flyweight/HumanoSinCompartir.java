@@ -3,10 +3,30 @@ package Flyweight;
 
 public class HumanoSinCompartir extends Personaje{
 
-    private final HumanoConcreto humano= CreadorHumanos.getHumano();
+    private int coorX;
+    private int coorY;
+    private int daño;
     
-    @Override
+    private final HumanoConcreto humano;
+    
+    public HumanoSinCompartir(int x, int y){
+    
+        this.coorX=x;
+        this.coorY=y;
+        humano= CreadorHumanos.getHumano();
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
+     @Override
     public int getVida() {
+        
+        vida=vida-daño;
+        
         return vida;
     }
 
@@ -19,6 +39,8 @@ public class HumanoSinCompartir extends Personaje{
 
     @Override
     public int getDefensa() {
+        
+        daño=(daño/defensa)*10;
         return defensa;
     }
 
@@ -31,6 +53,7 @@ public class HumanoSinCompartir extends Personaje{
 
     @Override
     public int getAtaque() {
+        
         return ataque;
     }
 
@@ -41,6 +64,8 @@ public class HumanoSinCompartir extends Personaje{
 
     @Override
     public int getVelocidad() {
+        
+        velocidad = velocidad+velocidad;
         return velocidad;    
     }
 
@@ -49,6 +74,6 @@ public class HumanoSinCompartir extends Personaje{
         
         this.velocidad=humano.getVelocidad();
     
+        System.out.println("personaje humano"+coorX+" "+coorY+" "+vida+" "+ataque+" "+defensa+" "+velocidad);
     }
-   
 }

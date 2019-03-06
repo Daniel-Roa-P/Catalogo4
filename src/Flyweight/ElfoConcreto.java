@@ -5,6 +5,15 @@ import static main.Catalogo.aspectoElfo;
 
 public class ElfoConcreto extends Personaje {
 
+    ElfoConcreto(){
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
     @Override
     public int getVida() {
         return vida;
