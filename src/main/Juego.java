@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -118,6 +120,31 @@ public class Juego extends JFrame implements ActionListener{
         
     }
     
+     public void correr(){
+        
+        Timer timer=new Timer();
+                
+        TimerTask task;
+            
+        task = new TimerTask(){
+            
+            @Override
+            public void run(){
+             
+                String[][] tempMatriz=matriz;
+                matriz=adm.definirEstado(tempMatriz);
+                actualizarComponentes();
+                
+            }
+            
+        };
+     
+           
+           timer.schedule(task, 0, 1000);
+           
+    }
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -133,7 +160,7 @@ public class Juego extends JFrame implements ActionListener{
             int x=Integer.parseInt(textoX.getText());
             int y=Integer.parseInt(textoY.getText());
             
-            adm.generarElfos(x, y);
+            adm.generarElfos((x*5)+1, (y*5)+1);
             
             matriz[(x*5)+1][(y*5)+1]="e";
             actualizarComponentes();
@@ -147,7 +174,7 @@ public class Juego extends JFrame implements ActionListener{
             int x=Integer.parseInt(textoX.getText());
             int y=Integer.parseInt(textoY.getText());
             
-            adm.generarHumanos(x, y);
+            adm.generarHumanos((x*5)+1, (y*5)+1);
             
             matriz[(x*5)+1][(y*5)+1]="h";
             actualizarComponentes();
@@ -161,7 +188,7 @@ public class Juego extends JFrame implements ActionListener{
             int x=Integer.parseInt(textoX.getText());
             int y=Integer.parseInt(textoY.getText());
             
-            adm.generarOrcos(x, y);
+            adm.generarOrcos((x*5)+1, (y*5)+1);
             
             matriz[(x*5)+1][(y*5)+1]="o";
             actualizarComponentes();
@@ -169,8 +196,8 @@ public class Juego extends JFrame implements ActionListener{
             
         } else if(e.getSource()==b5){
         
-            System.out.println("boton_5");
-            
+                correr();
+
         }
         
     }

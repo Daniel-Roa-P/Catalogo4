@@ -25,24 +25,11 @@ public class Miniaturas implements Sprites{
     }
 
     @Override
-    public void update(int c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Rectangle getRect() {
         Rectangle rect = null;
         rect = new Rectangle(xPos, yPos, imagen.getWidth(null), imagen.getHeight(null));
-        return rect;    }
-
-    @Override
-    public void cambiarSentido() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rect;    
     }
+
     
 }

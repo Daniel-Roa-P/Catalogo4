@@ -36,24 +36,23 @@ public class CampoBatalla extends Canvas{
                     rocas.add(new Miniaturas(f * 8, c * 8, aspectoHumano));
                 } else if (matriz[f][c].equals("o")) {
                     rocas.add(new Miniaturas(f * 8, c * 8, aspectoOrco));
+                }  else if (matriz[f][c].equals("n")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, "negro"));
                 } 
-
             }
         }
     }
     
     @Override
     public void paint(Graphics g) {
-        //super.paint(g); //To change body of generated methods, choose Tools | Templates.
     
         Graphics miG = imgBuffer.getGraphics();
-        //miG.drawImage(new ImageIcon(getClass().getResource("../imagenes/fondo.png")).getImage(), 0, 0, null);
         miG.clearRect(0, 0, 1300, 600);
         
-        for (Iterator<Sprites> iterator = rocas.iterator(); iterator.hasNext();) {
-            Sprites next = iterator.next();
+        for (int i = 0; i < rocas.size(); i++){
+           
+            Sprites next = rocas.get(i);
             next.draw(miG);
-
         }
         
         g.drawImage(imgBuffer, 0, 0, this);
