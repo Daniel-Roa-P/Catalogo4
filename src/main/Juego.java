@@ -140,7 +140,7 @@ public class Juego extends JFrame implements ActionListener{
         };
      
            
-           timer.schedule(task, 0, 1000);
+           timer.schedule(task, 0, 1500);
            
     }
     
@@ -150,7 +150,54 @@ public class Juego extends JFrame implements ActionListener{
         
         if(e.getSource()==b1){
          
-            System.out.println("boton_1");
+            int elfosEnemigos=(int)(total*Math.random());
+            total=total-elfosEnemigos;
+            int humanosEnemigos=(int)(total*Math.random());
+            total=total-humanosEnemigos;
+            int orcosEnemigos=total;
+            
+            adm.setEnemigos(elfosEnemigos, humanosEnemigos, orcosEnemigos);
+            
+            while(elfosEnemigos>0){
+            
+                int x=(int)((3*Math.random())+23)*5+1;
+                int y=(int)((14*Math.random()))*5+1;
+                
+                if(matriz[x][y].equals("0")){
+                    
+                    matriz[x][y]="E";
+                    elfosEnemigos--;
+                    adm.generarElfosE(x, y);
+                }
+            }
+            
+            while(humanosEnemigos>0){
+            
+                int x=(int)((3*Math.random())+23)*5+1;
+                int y=(int)((14*Math.random()))*5+1;
+                
+                if(matriz[x][y].equals("0")){
+                    
+                    matriz[x][y]="H";
+                    humanosEnemigos--;
+                    adm.generarHumanosE(x, y);
+                }
+            }
+            
+            while(orcosEnemigos>0){
+            
+                int x=(int)((3*Math.random())+23)*5+1;
+                int y=(int)((14*Math.random()))*5+1;
+                
+                if(matriz[x][y].equals("0")){
+                    
+                    matriz[x][y]="O";
+                    orcosEnemigos--;
+                    adm.generarOrcosE(x, y);
+                }
+            }
+            
+            actualizarComponentes();
             
         } else if(e.getSource()==b2 && nElfos>0){
         

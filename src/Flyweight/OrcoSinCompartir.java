@@ -74,7 +74,6 @@ public class OrcoSinCompartir extends Personaje{
         
         this.velocidad=orco.getVelocidad();
     
-        System.out.println("personaje orco"+coorX+" "+coorY+" "+vida+" "+ataque+" "+defensa+" "+velocidad);
     }
 
     public void setCoorX(int coorX) {

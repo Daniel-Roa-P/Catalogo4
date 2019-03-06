@@ -38,7 +38,13 @@ public class CampoBatalla extends Canvas{
                     rocas.add(new Miniaturas(f * 8, c * 8, aspectoOrco));
                 }  else if (matriz[f][c].equals("n")) {
                     rocas.add(new Miniaturas(f * 8, c * 8, "negro"));
-                } 
+                }  else if (matriz[f][c].equals("E")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, aspectoElfo));
+                } else if (matriz[f][c].equals("H")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, aspectoHumano));
+                } else if (matriz[f][c].equals("O")) {
+                    rocas.add(new Miniaturas(f * 8, c * 8, aspectoOrco));
+                }
             }
         }
     }

@@ -74,8 +74,7 @@ public class ElfoSinCompartir extends Personaje{
     public void setVelocidad() {
         
         this.velocidad=elfo.getVelocidad();
-    
-        System.out.println("personaje elfo "+coorX+" "+coorY+" "+vida+" "+ataque+" "+defensa+" "+velocidad);
+
         
     }
 

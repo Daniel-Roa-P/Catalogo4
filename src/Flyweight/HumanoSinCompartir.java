@@ -74,7 +74,6 @@ public class HumanoSinCompartir extends Personaje{
         
         this.velocidad=humano.getVelocidad();
     
-        System.out.println("personaje humano"+coorX+" "+coorY+" "+vida+" "+ataque+" "+defensa+" "+velocidad);
     }
 
     public void setCoorX(int coorX) {
