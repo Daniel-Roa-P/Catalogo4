@@ -20,4 +20,7 @@ public abstract class Personaje {
     public abstract int getVelocidad();
     public abstract void setVelocidad();
 
+    public void setDaño(int daño){};
+        
+
 }

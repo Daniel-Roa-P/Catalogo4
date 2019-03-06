@@ -140,7 +140,7 @@ public class Juego extends JFrame implements ActionListener{
         };
      
            
-           timer.schedule(task, 0, 1500);
+           timer.schedule(task, 0, 700);
            
     }
     
@@ -152,9 +152,9 @@ public class Juego extends JFrame implements ActionListener{
          
             int elfosEnemigos=(int)(total*Math.random());
             total=total-elfosEnemigos;
-            int humanosEnemigos=(int)(total*Math.random());
-            total=total-humanosEnemigos;
-            int orcosEnemigos=total;
+            int orcosEnemigos=(int)(total*Math.random());
+            total=total-orcosEnemigos;
+            int humanosEnemigos=total;
             
             adm.setEnemigos(elfosEnemigos, humanosEnemigos, orcosEnemigos);
             

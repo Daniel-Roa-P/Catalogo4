@@ -81,7 +81,7 @@ public class Administrador {
             int temX=elfos[i].getCoorX()+5;
             int temY=elfos[i].getCoorY();
             
-            if(temX<135 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
+            if(elfos[i].getVida()>0 && (temX<135 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n")))){
                 
                 matriz[temX-5][temY]="n";
                 matriz[temX][temY]="e";
@@ -89,9 +89,13 @@ public class Administrador {
                 elfos[i].setCoorX(temX);
                 elfos[i].setCoorY(temY);
                 
-            } else if((matriz[temX][temY].equals("E")) || (matriz[temX][temY].equals("O")) || (matriz[temX][temY].equals("H")) ){
-            
+            } else {
+                
+                matriz[temX-5][temY]=calcularVidaAliados( elfos[i],  matriz[temX][temY],  matriz[temX-5][temY]);
+                
             }
+            
+
             
         }
         
@@ -100,7 +104,7 @@ public class Administrador {
             int temX=elfosEnemigos[i].getCoorX()-5;
             int temY=elfosEnemigos[i].getCoorY();
             
-            if(temX>0 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
+            if(elfosEnemigos[i].getVida()>0 && temX>0 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
                 
                 matriz[temX+5][temY]="n";
                 matriz[temX][temY]="E";
@@ -108,9 +112,12 @@ public class Administrador {
                 elfosEnemigos[i].setCoorX(temX);
                 elfosEnemigos[i].setCoorY(temY);
                 
-            } else if((matriz[temX][temY].equals("e")) || (matriz[temX][temY].equals("o")) || (matriz[temX][temY].equals("h")) ){
-            
+            } else {
+                
+                matriz[temX+5][temY]=calcularVidaEnemigos( elfosEnemigos[i],  matriz[temX][temY],  matriz[temX+5][temY]);
+                
             }
+            
             
         }
         
@@ -119,7 +126,7 @@ public class Administrador {
             int temX=humanos[i].getCoorX()+5;
             int temY=humanos[i].getCoorY();
             
-            if(temX<135 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
+            if(humanos[i].getVida()>0 && temX<135 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
                 
                 matriz[temX-5][temY]="n";
                 matriz[temX][temY]="h";
@@ -127,9 +134,9 @@ public class Administrador {
                 humanos[i].setCoorX(temX);
                 humanos[i].setCoorY(temY);
                 
-            } else if((matriz[temX][temY].equals("E")) || (matriz[temX][temY].equals("O")) || (matriz[temX][temY].equals("H")) ){
+            } else {
                 
-                
+                matriz[temX-5][temY]=calcularVidaAliados( humanos[i],  matriz[temX][temY],  matriz[temX-5][temY]);
                 
             }
             
@@ -140,7 +147,7 @@ public class Administrador {
             int temX=humanosEnemigos[i].getCoorX()-5;
             int temY=humanosEnemigos[i].getCoorY();
             
-            if(temX>0 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
+            if(humanosEnemigos[i].getVida()>0 && temX>0 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
                 
                 matriz[temX+5][temY]="n";
                 matriz[temX][temY]="H";
@@ -148,8 +155,10 @@ public class Administrador {
                 humanosEnemigos[i].setCoorX(temX);
                 humanosEnemigos[i].setCoorY(temY);
                 
-            }  else if((matriz[temX][temY].equals("e")) || (matriz[temX][temY].equals("o")) || (matriz[temX][temY].equals("h")) ){
-            
+            } else {
+                
+                matriz[temX+5][temY]=calcularVidaEnemigos( humanosEnemigos[i],  matriz[temX][temY],  matriz[temX+5][temY]);
+                
             }
             
         }
@@ -159,7 +168,7 @@ public class Administrador {
             int temX=orcos[i].getCoorX()+5;
             int temY=orcos[i].getCoorY();
             
-            if(temX<135 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
+            if(orcos[i].getVida()>0 && temX<135 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
                 
                 matriz[temX-5][temY]="n";
                 matriz[temX][temY]="o";
@@ -167,8 +176,10 @@ public class Administrador {
                 orcos[i].setCoorX(temX);
                 orcos[i].setCoorY(temY);
                 
-            } else if((matriz[temX][temY].equals("E")) || (matriz[temX][temY].equals("O")) || (matriz[temX][temY].equals("H")) ){
-            
+            } else {
+                
+                matriz[temX-5][temY]=calcularVidaAliados( orcos[i],  matriz[temX][temY],  matriz[temX-5][temY]);
+                
             }
                    
         }
@@ -178,7 +189,7 @@ public class Administrador {
             int temX=orcosEnemigos[i].getCoorX()-5;
             int temY=orcosEnemigos[i].getCoorY();
             
-            if(temX>0 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
+            if(orcosEnemigos[i].getVida()>0 && temX>0 && (matriz[temX][temY].equals("0") || matriz[temX][temY].equals("n"))){
                 
                 matriz[temX+5][temY]="n";
                 matriz[temX][temY]="O";
@@ -186,8 +197,10 @@ public class Administrador {
                 orcosEnemigos[i].setCoorX(temX);
                 orcosEnemigos[i].setCoorY(temY);
                 
-            } else if((matriz[temX][temY].equals("e")) || (matriz[temX][temY].equals("o")) || (matriz[temX][temY].equals("h")) ){
-            
+            } else {
+                
+                matriz[temX+5][temY]=calcularVidaEnemigos( orcosEnemigos[i],  matriz[temX][temY],  matriz[temX+5][temY]);
+                
             }
             
         }
@@ -196,6 +209,113 @@ public class Administrador {
     
     }
     
+    public String calcularVidaAliados(Personaje personaje, String caracterEnemigo, String CaracterAliado){
+        
+        Personaje rival = null;
+        String miniatura = CaracterAliado;
+        int indice=5;
+        int tempVel=0;
+        int daño=0;
+        
+            if(caracterEnemigo.equals("E")){
+               
+                rival = new ElfoSinCompartir();
+                
+            } else if(caracterEnemigo.equals("H")){
+            
+                rival = new HumanoSinCompartir();
+                
+            } else if((caracterEnemigo.equals("O"))){
+                
+                rival = new OrcoSinCompartir();
+                                
+            } else {
+                
+                rival=null;
+                
+            }
+            
+            if(rival!=null){
+            
+            while(indice>0){
+                
+                tempVel=tempVel+rival.getVelocidad();
+                
+                if(tempVel>10){
+                    
+                    daño=daño+rival.getAtaque();
+                    tempVel=0;
+                }
+                indice--;
+            }
+            
+            personaje.setDaño(daño);
+            personaje.getDefensa();
+            
+            
+            if(personaje.getVida()<0){
+            
+                miniatura="s";
+                
+            }
+            
+            }
+            
+            return miniatura;
+        
+    }
     
+    public String calcularVidaEnemigos(Personaje personaje, String caracterEnemigo, String CaracterAliado){
+        
+        System.out.println(caracterEnemigo);
+        System.out.println(CaracterAliado);
+        
+        Personaje rival = null;
+        String miniatura = CaracterAliado;
+        int indice=5;
+        int tempVel=0;
+        int daño=0;
+        
+            if(caracterEnemigo.equals("e")){
+               
+                rival = new ElfoSinCompartir();
+                
+            } else if(caracterEnemigo.equals("h")){
+            
+                rival = new HumanoSinCompartir();
+                
+            } else if((caracterEnemigo.equals("o"))){
+                
+                rival = new OrcoSinCompartir();
+                                
+            }
+            
+            if(rival!=null){
+            
+            while(indice>0){
+            
+                tempVel=tempVel+rival.getVelocidad();
+                
+                if(tempVel>10){
+                    
+                    daño=daño+rival.getAtaque();
+                    tempVel=0;
+                }
+                indice--;
+            }
+            
+            personaje.setDaño(daño);
+            personaje.getDefensa();
+            
+            if(personaje.getVida()<0){
+            
+                miniatura="s";
+                
+            }  
+            }
+            
+            return miniatura;
+        
+    }
     
 }

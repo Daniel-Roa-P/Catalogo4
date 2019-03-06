@@ -23,6 +23,18 @@ public class ElfoSinCompartir extends Personaje{
         
     }
     
+    public ElfoSinCompartir(){
+        
+        elfo= CreadorElfos.getElfo();
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
+    
      @Override
     public int getVida() {
         
@@ -66,7 +78,6 @@ public class ElfoSinCompartir extends Personaje{
     @Override
     public int getVelocidad() {
         
-        velocidad = velocidad+velocidad;
         return velocidad;    
     }
 
@@ -86,6 +97,7 @@ public class ElfoSinCompartir extends Personaje{
         this.coorY = coorY;
     }
 
+    @Override
     public void setDaño(int daño) {
         this.daño = daño;
     }

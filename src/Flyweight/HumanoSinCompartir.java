@@ -22,6 +22,17 @@ public class HumanoSinCompartir extends Personaje{
         
     }
     
+    public HumanoSinCompartir(){
+
+        humano= CreadorHumanos.getHumano();
+        
+        setAtaque();
+        setDefensa();
+        setVida();
+        setVelocidad();
+        
+    }
+    
      @Override
     public int getVida() {
         
@@ -65,7 +76,6 @@ public class HumanoSinCompartir extends Personaje{
     @Override
     public int getVelocidad() {
         
-        velocidad = velocidad+velocidad;
         return velocidad;    
     }
 
@@ -84,6 +94,7 @@ public class HumanoSinCompartir extends Personaje{
         this.coorY = coorY;
     }
 
+    @Override
     public void setDaño(int daño) {
         this.daño = daño;
     }
